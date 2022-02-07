@@ -28,3 +28,6 @@ replay_pid*
 
 # Production files
 src/main/resources/application-prod.yml
+
+# Target
+**/target/**

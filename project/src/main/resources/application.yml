@@ -1,3 +1,6 @@
+
 spring:
+  application:
+    name: project-service
   profiles:
     active: dev
