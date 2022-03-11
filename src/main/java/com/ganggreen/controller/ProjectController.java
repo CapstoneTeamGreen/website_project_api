@@ -34,7 +34,7 @@ public class ProjectController {
                     content = @Content(schema = @Schema(implementation = Project.class)))
     )
     public Project get(@RequestAttribute int id) {
-        //TODO remove example
+        //TODO remove examplemura
         return new Project("Test!");
     }
 
