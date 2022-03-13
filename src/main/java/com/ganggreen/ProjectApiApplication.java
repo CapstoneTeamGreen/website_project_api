@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
         DataSourceAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class
 })
-@EnableEurekaClient
 @EnableDiscoveryClient
 public class ProjectApiApplication {
 
