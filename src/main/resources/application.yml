@@ -1,3 +1,7 @@
+server:
+  servlet:
+    context-path: /projects
+  port: 8078
 
 spring:
   application:
@@ -12,7 +16,3 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.application.name}
-
-server:
-  servlet:
-    context-path: /projects

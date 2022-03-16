@@ -8,6 +8,6 @@ ENV JAVA_OPTS="-Xmx128 -Xms64m -Djava.security.egd=file:/dev/./urandom"
 
 ENV SERVICE_NAME="website_project_api"
 
-ENV SPRING_PROFILES_AVTIVE="docker"
+ENV SPRING_PROFILES_ACTIVE="docker"
 
 ENTRYPOINT [ "java", "-jar", "application.jar"]

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.print.attribute.standard.Media;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -27,19 +28,13 @@ public class ProjectController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(
-            description = "Returns the specific project for the given id.",
+            description = "Returns a collection of projects.",
             responses = @ApiResponse(responseCode = "200",
-                    content = @Content(schema = @Schema(implementation = Project.class)))
+                content = @Content(schema = @Schema(implementation = Project.class)))
     )
-    public Project get(@RequestAttribute int id) {
-        //TODO remove examplemura
-        return new Project("Test!");
-    }
-
     @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Project> getAll() {
+    public List<Project> getAll(Principal principal) {
         return List.of(new Project("Test1"), new Project("Test2"));
     }
 
