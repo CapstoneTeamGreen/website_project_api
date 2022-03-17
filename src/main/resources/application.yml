@@ -9,9 +9,6 @@ spring:
 
   profiles:
     active: dev
-  cloud:
-    kubernetes:
-      enabled: false
 
 eureka:
   instance:

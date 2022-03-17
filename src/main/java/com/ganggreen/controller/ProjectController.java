@@ -34,8 +34,11 @@ public class ProjectController {
                 content = @Content(schema = @Schema(implementation = Project.class)))
     )
     @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Project> getAll(Principal principal) {
-        return List.of(new Project("Test1"), new Project("Test2"));
+    public List<Project> getAll() {
+        return List.of(
+                new Project("Test1"),
+                new Project("Test2")
+        );
     }
 
 }
