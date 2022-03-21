@@ -13,10 +13,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Jason MacKeigan
  */
-@SpringBootApplication(exclude = {
-        DataSourceAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
-})
+@SpringBootApplication
 @EnableDiscoveryClient
 public class ProjectApiApplication {
 
@@ -29,5 +26,7 @@ public class ProjectApiApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+
 
 }
