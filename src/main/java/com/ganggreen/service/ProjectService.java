@@ -26,4 +26,10 @@ public class ProjectService {
     public Optional<Project> selectProjectById(int id) {
         return projectRepository.findById(id);
     }
+
+    public void createIfNotExists(Project project) {
+        if (!projectRepository.existsById(project.getId())) {
+            projectRepository.save(project);
+        }
+    }
 }

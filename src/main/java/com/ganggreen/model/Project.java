@@ -4,6 +4,9 @@ package com.ganggreen.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
@@ -11,37 +14,37 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 
 
-@Entity(name = "Project")
-@Table(name = "projects")
+@Entity
 public class Project {
 
     @Id
-    @GeneratedValue(
-            strategy = IDENTITY
-    )
+    @GeneratedValue(strategy = IDENTITY)
+    @JsonProperty("projectId")
     @Column (name = "id", unique = true, updatable = false, nullable = false)
     private int id;
 
+    @JsonProperty("projectName")
     @Column(name = "name", nullable = false)
     private String name;
 
+    @JsonProperty("projectDesc")
     @Column(name = "description", nullable = false)
     private String description;
 
-    //private List<String> technologies;
+    @JsonProperty("projectLink")
     @Column(name = "link", nullable = true)
     private String link;
 
-    public Project(
-            @JsonProperty("projectId") int id,
-            @JsonProperty("projectName") String name,
-            @JsonProperty("projectDesc") String desc,
-            @JsonProperty("projectLink")String link) {
+    @JsonProperty("technologies")
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Technology> technology = new HashSet<>();
+
+    public Project(int id, String name, String desc, String link, Set<Technology> technology) {
         this.id = id;
-        this.setName(name);
-        this.setDescription(desc);
-        //this.setTechnologies(new ArrayList<String>());
-        this.setLink(link);
+        this.name = name;
+        this.description = desc;
+        this.link = link;
+        this.technology = technology;
     }
 
     public Project() {
@@ -60,13 +63,13 @@ public class Project {
         return description;
     }
 
-//    public List<String> getTechnologies() {
-//        return technologies;
-//    }
-//
-//    public void setTechnologies(List<String> technologies) {
-//        this.technologies = technologies;
-//    }
+    public Set<Technology> getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(Set<Technology> technologies) {
+        this.technology = technologies;
+    }
 
     public String getLink() {
         return link;

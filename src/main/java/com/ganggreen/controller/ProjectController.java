@@ -23,7 +23,7 @@ import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 /**
  * @author Jason MacKeigan
- * @contributor Gideon Niemelainen
+ * @author Gideon Niemelainen
  */
 @RestController("/project")
 public class ProjectController {
@@ -33,9 +33,6 @@ public class ProjectController {
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
-
-    @Autowired
-    private RestTemplate restTemplate;
 
     @Operation(
             description = "Returns a collection of projects.",
@@ -57,13 +54,5 @@ public class ProjectController {
     public Optional<Project> getProjectById(@PathVariable("id") int id) {
         return projectService.selectProjectById(id);
     }
-
-//    @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Project> getAll() {
-//        return List.of(
-//                new Project(1, "Test1", "A test project",  "www.test1.com"),
-//                new Project(2, "Test2", "A testier project",  "www.test1.com")
-//        );
-//    }
 
 }
