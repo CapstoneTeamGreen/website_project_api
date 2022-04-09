@@ -45,11 +45,10 @@ public class ProjectController {
         return projectService.getAllProjects();
     }
 
-    @Operation (
+    @Operation(
             description = "Returns a specific selected project.",
             responses = @ApiResponse(responseCode = "200",
-                content = @Content(schema = @Schema(implementation = Project.class)))
-    )
+                content = @Content(schema = @Schema(implementation = Project.class))))
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Optional<Project> getProjectById(@PathVariable("id") int id) {
         return projectService.selectProjectById(id);
